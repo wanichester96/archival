@@ -16,17 +16,17 @@
             theme: {
                 extend: {
                     colors: {
-                        'arch-black': '#0A090B',
-                        'arch-obsidian': '#121014',
-                        'arch-charcoal': '#18151C',
-                        'arch-maroon-dark': '#380E14',
-                        'arch-maroon': '#4A121A',
-                        'arch-maroon-light': '#661826',
-                        'arch-silver': '#C0C4CC',
-                        'arch-pewter': '#8A909A',
-                        'arch-gold-muted': '#9E8863',
-                        'arch-text': '#D1CDD4',
-                        'arch-paper-dark': '#141117',
+                        'arch-black': '#050406',
+                        'arch-obsidian': '#0A080D',
+                        'arch-charcoal': '#0F0B12',
+                        'arch-maroon-dark': '#1F070B',
+                        'arch-maroon': '#2D0A10',
+                        'arch-maroon-light': '#42111A',
+                        'arch-silver': '#BDB5C2',
+                        'arch-pewter': '#6E6674',
+                        'arch-gold-muted': '#78684A',
+                        'arch-text': '#C5BDC8',
+                        'arch-paper-dark': '#0D0A10',
                     },
                     fontFamily: {
                         oldEnglish: ['"UnifrakturMaguntia"', 'serif'],
@@ -38,18 +38,96 @@
                         gothic: ['"UnifrakturMaguntia"', 'serif'],
                     },
                     boxShadow: {
-                        'cathedral': '0 20px 50px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(74, 18, 26, 0.4)',
-                        'silver-glow': '0 0 15px rgba(192, 196, 204, 0.2)',
-                        'maroon-glow': '0 0 20px rgba(102, 24, 38, 0.4)',
+                        'cathedral': '0 25px 60px rgba(0, 0, 0, 0.95), inset 0 0 25px rgba(31, 7, 11, 0.6)',
+                        'silver-glow': '0 0 12px rgba(189, 181, 194, 0.1)',
+                        'maroon-glow': '0 0 20px rgba(66, 17, 26, 0.5)',
                     }
                 }
             }
         }
     </script>
-<!-- ... existing code ... -->
+
+    <style>
+        body {
+            background-color: #050406;
+            background-image: 
+                radial-gradient(rgba(189, 181, 194, 0.02) 1px, transparent 1px),
+                radial-gradient(rgba(0, 0, 0, 0.95) 100%, transparent);
+            background-size: 24px 24px, 100% 100%;
+            color: #C5BDC8;
+            min-height: 100vh;
+        }
+
+        /* Gothic Panel Container */
+        .gothic-panel {
+            background-color: #0A080D;
+            border: 1px solid #2A2730;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        }
+
+        /* Spine Crease Shadow */
+        .spine-shadow {
+            background: linear-gradient(90deg, 
+                rgba(0,0,0,0.85) 0%, 
+                rgba(15,11,18,0.95) 48%, 
+                rgba(3,2,4,0.98) 50%, 
+                rgba(15,11,18,0.95) 52%, 
+                rgba(0,0,0,0.85) 100%);
+        }
+
+        /* Cathedral Arch Avatar Frame */
+        .avatar-arch-frame {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
+            border: 1px solid #3E1E26;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* Gothic Ribbon Bookmark */
+        .gothic-ribbon {
+            position: absolute;
+            top: -8px;
+            right: 40px;
+            width: 24px;
+            height: 150px;
+            background: linear-gradient(135deg, #2D0A10, #1F070B);
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+            z-index: 30;
+            border: 1px solid #42111A;
+            box-shadow: 3px 5px 15px rgba(0,0,0,0.8);
+        }
+
+        /* Wax Seal Drip Animation */
+        @keyframes waxSealDrip {
+            0% { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(5deg); opacity: 1; opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .wax-seal-anim {
+            animation: waxSealDrip 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Ultra Dark Reader Themes */
+        .theme-obsidian { background-color: #0D0A10; color: #C5BDC8; }
+        .theme-dark-maroon { background-color: #19080C; color: #D6C2C6; }
+        .theme-charcoal { background-color: #121016; color: #BEB7C4; }
+        .theme-abyssal { background-color: #060508; color: #A8A0AC; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050406; }
+        ::-webkit-scrollbar-thumb { background: #1F070B; border: 1px solid #2A2730; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2D0A10; }
+    </style>
+</head>
+<body class="font-serif flex flex-col justify-between min-h-screen relative selection:bg-arch-maroon selection:text-arch-silver">
+
+    <!-- Top Classical Header -->
+    <header class="sticky top-0 z-40 bg-arch-black/95 backdrop-blur-md border-b border-arch-maroon-dark shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            
             <!-- Logo & Brand Title -->
             <button onclick="showView('pairings-view')" class="flex items-center gap-3 text-left group">
-                <div class="w-11 h-11 cathedral-arch bg-arch-maroon-dark border border-arch-silver/40 flex items-center justify-center text-arch-silver text-xl shadow-silver-glow group-hover:border-arch-maroon-light transition duration-300">
+                <div class="w-11 h-11 avatar-arch-frame bg-arch-maroon-dark border border-arch-maroon-light flex items-center justify-center text-arch-silver text-xl shadow-maroon-glow group-hover:border-arch-silver/40 transition duration-300">
                     ⛪
                 </div>
                 <div>
@@ -61,28 +139,110 @@
                     </span>
                 </div>
             </button>
-<!-- ... existing code ... -->
+
+            <!-- Navigation Links -->
+            <nav class="flex items-center gap-2 sm:gap-3 font-cinzel text-xs">
+                <button onclick="showView('pairings-view')" class="px-3.5 py-1.5 rounded bg-arch-obsidian hover:bg-arch-charcoal border border-arch-maroon-dark text-arch-silver transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-users text-arch-silver/70"></i>
+                    <span class="hidden sm:inline">Pairings</span>
+                </button>
+                <button onclick="showView('directory-view')" class="px-3.5 py-1.5 rounded bg-arch-obsidian hover:bg-arch-charcoal border border-arch-maroon-dark text-arch-silver transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-archive text-arch-silver/70"></i>
+                    <span class="hidden sm:inline">Library</span>
+                </button>
+                <button onclick="showView('bookmarks-view')" class="px-3.5 py-1.5 rounded bg-arch-obsidian hover:bg-arch-charcoal border border-arch-maroon-dark text-arch-silver transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bookmark text-arch-silver/70"></i>
+                    <span class="hidden sm:inline">Saved</span>
+                    <span id="nav-bookmark-count" class="bg-arch-maroon-dark text-arch-silver px-1.5 py-0.2 rounded text-[10px] border border-arch-maroon-light">0</span>
+                </button>
+                <button onclick="showView('post-view')" class="px-4 py-1.5 rounded bg-arch-maroon-dark hover:bg-arch-maroon border border-arch-maroon-light text-arch-silver font-bold transition shadow-maroon-glow flex items-center gap-1.5">
+                    <i class="fa-solid fa-quill"></i>
+                    <span>Publish Work</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto w-full px-3 sm:px-6 py-6 flex-grow">
+
+        <!-- VIEW 1: DUAL-AVATAR PAIRING DIRECTORY GRID (DEFAULT) -->
+        <section id="pairings-view" class="space-y-6">
+            
             <!-- Hero Cathedral Banner -->
-            <div class="gothic-panel rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-cathedral border border-arch-silver/20">
+            <div class="gothic-panel rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-cathedral border border-arch-maroon-dark">
                 <div class="absolute -right-10 -bottom-10 text-9xl text-arch-silver/5 pointer-events-none font-oldEnglish">⚜️</div>
                 <div class="max-w-3xl relative z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-arch-maroon-dark/60 border border-arch-maroon-light text-arch-silver text-xs font-cinzel tracking-wider mb-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-arch-maroon-dark border border-arch-maroon-light text-arch-silver text-xs font-cinzel tracking-wider mb-3">
                         <span>🩸 Cathedral Sanctum of Anime Fanworks</span>
                     </div>
                     <h2 class="font-oldEnglish text-4xl md:text-6xl font-normal text-arch-silver mb-2 tracking-wide leading-tight">
                         Sacred Manuscripts & High-End Pairings
                     </h2>
-                    <p class="font-serif italic text-base md:text-lg text-arch-text/80 leading-relaxed">
+                    <p class="font-serif italic text-base md:text-lg text-arch-pewter leading-relaxed">
                         Explore dark anime fanfictions, cathedral rivalries, blood pacts, and gothic slow-burn romances bound in muted velvet and iron.
                     </p>
                 </div>
-<!-- ... existing code ... -->
+
+                <!-- Search & Filters -->
+                <div class="mt-6 flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full flex-grow">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-arch-pewter"></i>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Search by ship, character, fandom, or dark tropes..." 
+                            oninput="filterWorks()"
+                            class="w-full pl-11 pr-4 py-3 rounded-lg bg-arch-black border border-arch-maroon-dark focus:outline-none focus:border-arch-maroon-light text-sm text-arch-text placeholder:text-arch-pewter/60 font-serif"
+                        />
+                    </div>
+                    <select id="rating-filter" onchange="filterWorks()" class="w-full sm:w-52 px-4 py-3 rounded-lg bg-arch-black border border-arch-maroon-dark text-xs font-cinzel text-arch-silver focus:outline-none">
+                        <option value="ALL">All Ratings</option>
+                        <option value="General Audiences">General Audiences</option>
+                        <option value="Teen And Up Audiences">Teen & Up</option>
+                        <option value="Mature">Mature</option>
+                        <option value="Explicit">Explicit</option>
+                    </select>
+                </div>
+
+                <!-- Quick Trope Buttons -->
+                <div class="mt-4 flex flex-wrap items-center gap-2 text-xs font-cinzel">
+                    <span class="text-arch-pewter mr-1">Popular Tropes:</span>
+                    <button onclick="setSearchQuery('Cathedral')" class="px-3 py-1 rounded bg-arch-black hover:bg-arch-obsidian border border-arch-maroon-dark text-arch-silver transition">#Cathedral</button>
+                    <button onclick="setSearchQuery('Blood Pact')" class="px-3 py-1 rounded bg-arch-black hover:bg-arch-obsidian border border-arch-maroon-dark text-arch-silver transition">#Blood Pact</button>
+                    <button onclick="setSearchQuery('Enemies to Lovers')" class="px-3 py-1 rounded bg-arch-black hover:bg-arch-obsidian border border-arch-maroon-dark text-arch-silver transition">#Enemies to Lovers</button>
+                    <button onclick="setSearchQuery('Slow Burn')" class="px-3 py-1 rounded bg-arch-black hover:bg-arch-obsidian border border-arch-maroon-dark text-arch-silver transition">#Slow Burn</button>
+                </div>
+            </div>
+
+            <!-- Header Count & Switcher -->
+            <div class="flex items-center justify-between border-b border-arch-maroon-dark pb-3 px-1 font-cinzel">
+                <span class="text-sm font-bold text-arch-silver tracking-wider" id="results-count">
+                    Showing 0 Archive Works
+                </span>
+                <span class="text-xs text-arch-pewter italic font-serif">Click any pairing to read the dark codex 📖</span>
+            </div>
+
+            <!-- Featured Ship Categories Grid with Dual Cathedral Avatars -->
+            <div id="ship-category-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+            <!-- All Works Archive Directory List -->
+            <div class="pt-6">
+                <h3 class="font-oldEnglish text-2xl font-normal text-arch-silver mb-4 flex items-center gap-2 border-b border-arch-maroon-dark pb-2">
+                    <span class="text-arch-maroon-light">✝</span>
+                    <span>All Cathedral Manuscripts</span>
+                </h3>
+                <div id="works-container" class="space-y-4"></div>
+            </div>
+        </section>
+
+
         <!-- VIEW 2: CODEX BOOK READER MODAL VIEW -->
         <section id="reader-view" class="hidden space-y-4">
             
             <!-- Utility Controls Bar -->
             <div class="gothic-panel rounded-xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-4">
-                <button onclick="showView('pairings-view')" class="px-4 py-1.5 rounded bg-arch-obsidian hover:bg-arch-charcoal border border-arch-silver/30 text-xs font-cinzel text-arch-silver transition flex items-center gap-2">
+                <button onclick="showView('pairings-view')" class="px-4 py-1.5 rounded bg-arch-black hover:bg-arch-obsidian border border-arch-maroon-dark text-xs font-cinzel text-arch-silver transition flex items-center gap-2">
                     <i class="fa-solid fa-chevron-left"></i>
                     <span>Return to Library</span>
                 </button>
@@ -90,40 +250,40 @@
                 <!-- Reader Customization Controls & Export Options -->
                 <div class="flex flex-wrap items-center gap-4 text-xs font-cinzel">
                     <!-- Export / Download Options -->
-                    <div class="flex items-center gap-2 pr-3 border-r border-arch-silver/20">
+                    <div class="flex items-center gap-2 pr-3 border-r border-arch-maroon-dark">
                         <span class="text-arch-pewter">Export:</span>
-                        <button onclick="downloadEPUB()" class="px-2.5 py-1 rounded bg-arch-maroon-dark hover:bg-arch-maroon border border-arch-silver/30 text-arch-silver transition flex items-center gap-1.5" title="Download EPUB eBook">
-                            <i class="fa-solid fa-book text-arch-silver"></i>
+                        <button onclick="downloadEPUB()" class="px-2.5 py-1 rounded bg-arch-maroon-dark hover:bg-arch-maroon border border-arch-maroon-light text-arch-silver transition flex items-center gap-1.5" title="Download EPUB eBook">
+                            <i class="fa-solid fa-book text-arch-silver/80"></i>
                             <span>EPUB</span>
                         </button>
-                        <button onclick="downloadPDF()" class="px-2.5 py-1 rounded bg-arch-maroon-dark hover:bg-arch-maroon border border-arch-silver/30 text-arch-silver transition flex items-center gap-1.5" title="Download Printable Document">
-                            <i class="fa-solid fa-file-pdf text-arch-silver"></i>
+                        <button onclick="downloadPDF()" class="px-2.5 py-1 rounded bg-arch-maroon-dark hover:bg-arch-maroon border border-arch-maroon-light text-arch-silver transition flex items-center gap-1.5" title="Download Printable Document">
+                            <i class="fa-solid fa-file-pdf text-arch-silver/80"></i>
                             <span>PDF</span>
                         </button>
                     </div>
 
-                    <!-- Lighting Mode -->
+                    <!-- Dark Reader Tone Selector -->
                     <div class="flex items-center gap-2">
                         <span class="text-arch-pewter">Lighting:</span>
-                        <button onclick="setReaderTheme('theme-charcoal')" class="w-6 h-6 rounded bg-[#161318] border border-arch-silver/40 shadow" title="Muted Charcoal"></button>
-                        <button onclick="setReaderTheme('theme-maroon-velvet')" class="w-6 h-6 rounded bg-[#210D12] border border-arch-silver/40 shadow" title="Deep Maroon Velvet"></button>
-                        <button onclick="setReaderTheme('theme-midnight-obsidian')" class="w-6 h-6 rounded bg-[#0A090B] border border-arch-silver/40 shadow" title="Midnight Obsidian"></button>
-                        <button onclick="setReaderTheme('theme-silver-cathedral')" class="w-6 h-6 rounded bg-[#1F2F28] border border-arch-silver/40 shadow" title="Silver Cathedral"></button>
+                        <button onclick="setReaderTheme('theme-obsidian')" class="w-6 h-6 rounded bg-[#0D0A10] border border-arch-maroon-dark shadow" title="Obsidian Cathedral"></button>
+                        <button onclick="setReaderTheme('theme-dark-maroon')" class="w-6 h-6 rounded bg-[#19080C] border border-arch-maroon-dark shadow" title="Dark Crimson Velvet"></button>
+                        <button onclick="setReaderTheme('theme-charcoal')" class="w-6 h-6 rounded bg-[#121016] border border-arch-maroon-dark shadow" title="Deep Charcoal"></button>
+                        <button onclick="setReaderTheme('theme-abyssal')" class="w-6 h-6 rounded bg-[#060508] border border-arch-maroon-dark shadow" title="Abyssal Midnight"></button>
                     </div>
 
                     <!-- Reader Font Style -->
                     <div class="flex items-center gap-2">
                         <span class="text-arch-pewter">Font:</span>
-                        <button onclick="setReaderFontFamily('font-oldEnglish')" class="px-2.5 py-0.5 rounded bg-arch-black border border-arch-silver/30 text-arch-silver hover:bg-arch-obsidian font-oldEnglish">Old English</button>
-                        <button onclick="setReaderFontFamily('font-reader')" class="px-2.5 py-0.5 rounded bg-arch-black border border-arch-silver/30 text-arch-silver hover:bg-arch-obsidian">Garamond</button>
+                        <button onclick="setReaderFontFamily('font-oldEnglish')" class="px-2.5 py-0.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver hover:bg-arch-obsidian font-oldEnglish">Old English</button>
+                        <button onclick="setReaderFontFamily('font-reader')" class="px-2.5 py-0.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver hover:bg-arch-obsidian">Garamond</button>
                     </div>
 
                     <!-- Reader Font Size -->
                     <div class="flex items-center gap-1">
                         <span class="text-arch-pewter mr-1">Size:</span>
-                        <button onclick="setReaderFontSize('text-base')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-silver/30 text-arch-silver hover:bg-arch-obsidian">S</button>
-                        <button onclick="setReaderFontSize('text-lg')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-silver/30 text-arch-silver hover:bg-arch-obsidian font-bold">M</button>
-                        <button onclick="setReaderFontSize('text-xl')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-silver/30 text-arch-silver hover:bg-arch-obsidian text-sm font-bold">L</button>
+                        <button onclick="setReaderFontSize('text-base')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver hover:bg-arch-obsidian">S</button>
+                        <button onclick="setReaderFontSize('text-lg')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver hover:bg-arch-obsidian font-bold">M</button>
+                        <button onclick="setReaderFontSize('text-xl')" class="px-2 py-0.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver hover:bg-arch-obsidian text-sm font-bold">L</button>
                     </div>
                 </div>
             </div>
@@ -137,16 +297,16 @@
                 </div>
 
                 <!-- Opened Codex Pages -->
-                <div id="book-paper" class="theme-charcoal rounded-xl border border-arch-silver/20 min-h-[650px] shadow-inner relative flex flex-col md:flex-row overflow-hidden transition-colors duration-300">
+                <div id="book-paper" class="theme-obsidian rounded-xl border border-arch-maroon-dark min-h-[650px] shadow-inner relative flex flex-col md:flex-row overflow-hidden transition-colors duration-300">
                     
                     <!-- Spine Crease Shadow -->
                     <div class="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-16 spine-shadow pointer-events-none z-20"></div>
 
                     <!-- Left Page: Story Metadata & Dual Avatars -->
-                    <div class="w-full md:w-1/2 p-6 sm:p-10 border-b md:border-b-0 md:border-r border-arch-silver/20 flex flex-col justify-between relative">
+                    <div class="w-full md:w-1/2 p-6 sm:p-10 border-b md:border-b-0 md:border-r border-arch-maroon-dark flex flex-col justify-between relative">
                         <div>
                             <!-- Dual Characters Cathedral Arch Showcase -->
-                            <div class="flex items-center gap-4 mb-6 bg-black/40 p-4 rounded-xl border border-arch-silver/20">
+                            <div class="flex items-center gap-4 mb-6 bg-black/60 p-4 rounded-xl border border-arch-maroon-dark">
                                 <div class="flex items-center -space-x-4">
                                     <img id="reader-img1" src="" alt="Character 1" class="w-16 h-20 object-cover avatar-arch-frame z-10" />
                                     <img id="reader-img2" src="" alt="Character 2" class="w-16 h-20 object-cover avatar-arch-frame z-0" />
@@ -163,7 +323,7 @@
 
                             <!-- Rating Badge -->
                             <div class="flex flex-wrap items-center gap-2 mb-4 font-cinzel text-xs">
-                                <span id="reader-rating-badge" class="px-3 py-0.5 rounded bg-arch-maroon-dark text-arch-silver border border-arch-silver/40">
+                                <span id="reader-rating-badge" class="px-3 py-0.5 rounded bg-arch-maroon-dark text-arch-silver border border-arch-maroon-light">
                                     Rating
                                 </span>
                             </div>
@@ -177,11 +337,11 @@
                             </p>
 
                             <!-- Summary Box -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-arch-silver/20 mb-6">
+                            <div class="bg-black/40 rounded-xl p-4 border border-arch-maroon-dark mb-6">
                                 <h4 class="font-cinzel font-bold text-xs uppercase tracking-widest text-arch-silver/80 mb-1">
                                     Synopsis:
                                 </h4>
-                                <p id="reader-summary" class="font-reader italic text-sm leading-relaxed text-arch-text/90">
+                                <p id="reader-summary" class="font-reader italic text-sm leading-relaxed text-arch-text">
                                     Summary text...
                                 </p>
                             </div>
@@ -195,7 +355,7 @@
                         </div>
 
                         <!-- Left Page Footer -->
-                        <div class="mt-8 pt-4 border-t border-arch-silver/20 flex items-center justify-between text-xs font-cinzel">
+                        <div class="mt-8 pt-4 border-t border-arch-maroon-dark flex items-center justify-between text-xs font-cinzel">
                             <span id="reader-words">Words: 0</span>
                             <span id="reader-date">Archived: 2026</span>
                             <button id="reader-bookmark-btn" onclick="toggleBookmarkCurrent()" class="text-arch-silver font-bold flex items-center gap-1 hover:underline">
@@ -214,15 +374,15 @@
                         </div>
 
                         <!-- Kudos & Comments Thread -->
-                        <div class="pt-6 border-t-2 border-dashed border-arch-silver/20 space-y-6">
+                        <div class="pt-6 border-t border-arch-maroon-dark space-y-6">
                             
                             <!-- Animated Wax Seal Kudos Button -->
-                            <div class="flex items-center justify-between bg-black/30 p-4 rounded-xl border border-arch-silver/20 relative">
+                            <div class="flex items-center justify-between bg-black/40 p-4 rounded-xl border border-arch-maroon-dark relative">
                                 <div>
                                     <h4 class="font-cinzel font-bold text-sm text-arch-silver">Affix Dark Crimson Seal</h4>
                                     <p class="text-xs font-serif italic text-arch-pewter">Bestow your Rosary praise 🩸</p>
                                 </div>
-                                <button id="kudos-btn" onclick="addKudos()" class="relative group px-5 py-2.5 rounded bg-arch-maroon-dark hover:bg-arch-maroon text-arch-silver font-cinzel font-bold text-xs shadow-maroon-glow transition transform active:scale-95 flex items-center gap-2 border border-arch-silver/40">
+                                <button id="kudos-btn" onclick="addKudos()" class="relative group px-5 py-2.5 rounded bg-arch-maroon-dark hover:bg-arch-maroon text-arch-silver font-cinzel font-bold text-xs shadow-maroon-glow transition transform active:scale-95 flex items-center gap-2 border border-arch-maroon-light">
                                     <span class="text-lg">✝</span>
                                     <span>Kudos</span>
                                     <span id="reader-kudos-count" class="bg-arch-black px-2 py-0.5 rounded text-[11px] text-arch-silver">0</span>
@@ -231,27 +391,27 @@
 
                             <!-- Comment Thread Section -->
                             <div class="space-y-4">
-                                <h4 class="font-cinzel font-bold text-lg flex items-center gap-2 border-b border-arch-silver/20 pb-2 text-arch-silver">
+                                <h4 class="font-cinzel font-bold text-lg flex items-center gap-2 border-b border-arch-maroon-dark pb-2 text-arch-silver">
                                     <span>Manuscript Comments</span>
                                     <span id="comments-count-badge" class="text-xs bg-arch-maroon-dark text-arch-silver px-2 py-0.5 rounded font-mono">0</span>
                                 </h4>
 
                                 <!-- Add Comment Form -->
-                                <div class="bg-black/40 rounded-xl p-4 border border-arch-silver/20 space-y-3">
+                                <div class="bg-black/50 rounded-xl p-4 border border-arch-maroon-dark space-y-3">
                                     <input 
                                         type="text" 
                                         id="comment-name" 
                                         placeholder="Reader / Pen Name" 
-                                        class="w-full sm:w-1/2 px-3 py-1.5 rounded bg-arch-black border border-arch-silver/30 text-xs text-arch-text focus:outline-none"
+                                        class="w-full sm:w-1/2 px-3 py-1.5 rounded bg-arch-black border border-arch-maroon-dark text-xs text-arch-text focus:outline-none"
                                     />
                                     <textarea 
                                         id="comment-text" 
                                         rows="2" 
                                         placeholder="Leave your dark thoughts or chapter feedback..." 
-                                        class="w-full p-3 rounded bg-arch-black border border-arch-silver/30 text-xs text-arch-text focus:outline-none resize-none"
+                                        class="w-full p-3 rounded bg-arch-black border border-arch-maroon-dark text-xs text-arch-text focus:outline-none resize-none"
                                     ></textarea>
                                     <div class="flex justify-end">
-                                        <button onclick="postComment()" class="px-4 py-1.5 bg-arch-maroon-dark hover:bg-arch-maroon text-arch-silver rounded text-xs font-cinzel font-bold transition shadow border border-arch-silver/40">
+                                        <button onclick="postComment()" class="px-4 py-1.5 bg-arch-maroon-dark hover:bg-arch-maroon text-arch-silver rounded text-xs font-cinzel font-bold transition shadow border border-arch-maroon-light">
                                             Publish Note 🖋️
                                         </button>
                                     </div>
@@ -266,16 +426,577 @@
                 </div>
             </div>
         </section>
-<!-- ... existing code ... -->
+
+        <!-- VIEW 3: PUBLISH NEW WORK STUDIO -->
+        <section id="post-view" class="hidden max-w-3xl mx-auto">
+            <div class="gothic-panel rounded-2xl p-6 md:p-10 border border-arch-maroon-dark shadow-2xl space-y-6">
+                
+                <!-- Header -->
+                <div class="text-center border-b border-arch-maroon-dark pb-4">
+                    <div class="text-4xl mb-2 text-arch-silver">✝</div>
+                    <h2 class="font-oldEnglish text-3xl md:text-5xl font-normal text-arch-silver">
+                        Publish a Manuscript
+                    </h2>
+                    <p class="font-serif italic text-arch-pewter text-sm">
+                        Submit your romantic fanfiction work with dual cathedral character portraits
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form id="post-work-form" onsubmit="handlePostSubmit(event)" class="space-y-4 text-sm font-serif">
+                    
+                    <!-- Title & Author -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Work Title *</label>
+                            <input type="text" id="post-title" required placeholder="e.g. Blood Moon Sonnet" class="w-full px-4 py-2.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none focus:border-arch-maroon-light">
+                        </div>
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Author / Pen Name *</label>
+                            <input type="text" id="post-author" required placeholder="e.g. Scholar_V" class="w-full px-4 py-2.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none focus:border-arch-maroon-light">
+                        </div>
+                    </div>
+
+                    <!-- Fandom & Rating -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Fandom *</label>
+                            <input type="text" id="post-fandom" required placeholder="e.g. Jujutsu Kaisen, Castlevania" class="w-full px-4 py-2.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none focus:border-arch-maroon-light">
+                        </div>
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Rating *</label>
+                            <select id="post-rating" class="w-full px-4 py-2.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-silver font-cinzel text-xs focus:outline-none">
+                                <option value="General Audiences">General Audiences</option>
+                                <option value="Teen And Up Audiences">Teen And Up Audiences</option>
+                                <option value="Mature">Mature</option>
+                                <option value="Explicit">Explicit</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- DUAL AVATARS INPUT SECTION -->
+                    <div class="bg-arch-black p-4 rounded-xl border border-arch-maroon-dark space-y-3">
+                        <h4 class="font-cinzel text-xs font-bold text-arch-silver flex items-center gap-2">
+                            <i class="fa-solid fa-image"></i>
+                            <span>Ship Pairing Cathedral Avatars</span>
+                        </h4>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-arch-pewter mb-1">Character 1 Image URL *</label>
+                                <input type="url" id="post-img1" required placeholder="https://images.unsplash.com/photo-..." class="w-full px-3 py-2 rounded bg-arch-obsidian border border-arch-maroon-dark text-xs text-arch-text focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-arch-pewter mb-1">Character 2 Image URL *</label>
+                                <input type="url" id="post-img2" required placeholder="https://images.unsplash.com/photo-..." class="w-full px-3 py-2 rounded bg-arch-obsidian border border-arch-maroon-dark text-xs text-arch-text focus:outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-arch-pewter mb-1">Ship Name (e.g., Satoru / Suguru) *</label>
+                            <input type="text" id="post-ships" required placeholder="e.g. Satoru Gojo / Suguru Geto" class="w-full px-3 py-2 rounded bg-arch-obsidian border border-arch-maroon-dark text-xs text-arch-text focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Tags & Summary -->
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Additional Tropes & Tags</label>
+                        <input type="text" id="post-tags" placeholder="e.g. Cathedral, Enemies to Lovers, Blood Pact, Slow Burn" class="w-full px-4 py-2.5 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Synopsis / Summary *</label>
+                        <textarea id="post-summary" rows="3" required placeholder="Provide a compelling synopsis..." class="w-full p-3 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none resize-none"></textarea>
+                    </div>
+
+                    <!-- Story Text -->
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold text-arch-silver mb-1">Manuscript Text *</label>
+                        <textarea id="post-content" rows="10" required placeholder="Write or paste your story chapter content here..." class="w-full p-4 rounded bg-arch-black border border-arch-maroon-dark text-arch-text focus:outline-none font-reader text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="flex items-center justify-end gap-3 pt-4 border-t border-arch-maroon-dark">
+                        <button type="button" onclick="showView('pairings-view')" class="px-5 py-2 rounded bg-arch-obsidian border border-arch-maroon-dark text-arch-silver font-cinzel text-xs hover:bg-arch-charcoal transition">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-6 py-2 rounded bg-arch-maroon-dark text-arch-silver font-cinzel text-xs font-bold border border-arch-maroon-light hover:bg-arch-maroon transition shadow-maroon-glow flex items-center gap-1.5">
+                            <i class="fa-solid fa-feather-pointed"></i>
+                            <span>Publish to Archive 🩸</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- VIEW 4: BOOKMARKS VIEW -->
+        <section id="bookmarks-view" class="hidden space-y-6">
+            <div class="gothic-panel rounded-2xl p-6 border border-arch-maroon-dark shadow-xl">
+                <h2 class="font-oldEnglish text-3xl font-normal text-arch-silver mb-1 flex items-center gap-2">
+                    <span>✝ Saved Cathedral Manuscripts</span>
+                </h2>
+                <p class="font-serif italic text-sm text-arch-pewter">
+                    Your personal shelf of bookmarked pairing fanfictions
+                </p>
+            </div>
+
+            <div id="bookmarks-container" class="space-y-4"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 text-center py-6 border-t border-arch-maroon-dark bg-arch-black/90 text-xs font-serif text-arch-pewter">
+        <p class="font-oldEnglish text-lg text-arch-silver mb-1">"Vitas in litteris et umbra ponimus."</p>
+        <p>© ARCHIVAL • Preserving Muted Gothic & Anime Fanworks</p>
+    </footer>
+
+    <!-- Toast Popover -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+        <div class="bg-arch-maroon-dark text-arch-silver px-5 py-3 rounded-lg shadow-2xl border border-arch-maroon-light flex items-center gap-2 font-cinzel text-xs">
+            <span class="text-base">✝</span>
+            <span id="toast-text" class="font-semibold">Notification message</span>
+        </div>
+    </div>
+
+    <!-- JavaScript Core Script -->
     <script>
-        // ... existing code ...
-        // Reader Font Customization
+        // Sample Pre-populated Gothic Anime Pairings
+        const INITIAL_WORKS = [
+            {
+                id: 'work-1',
+                title: 'The Altar of Unbroken Vows',
+                author: 'Suguru_Archive',
+                fandom: 'Jujutsu Kaisen',
+                rating: 'Teen And Up Audiences',
+                ships: 'Satoru Gojo / Suguru Geto',
+                characters: 'Satoru Gojo, Suguru Geto, Shoko Ieiri',
+                tags: 'Cathedral, Blood Pact, Enemies to Lovers, Dark Academia, Slow Burn',
+                img1: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&auto=format&fit=crop&q=80',
+                img2: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
+                summary: 'In a gothic cathedral academy sequestered in high snow, Satoru and Suguru share secret vows under stained-glass windows before curses tear their paths apart.',
+                content: `The snow fell in heavy flakes outside St. Jude Cathedral, casting soft shadows across the stone floor. Satoru leaned against the choir balcony, his hair bone-white under the dim silver candles.\n\n"You shouldn't be here after midnight, Suguru," Satoru murmured softly, a dark smirk catching his lips as Suguru stepped into the pale moonlight.\n\nSuguru adjusted his black robes, his fingers stained with blood ink from his curse seal bindings. "And leave you alone with the ghosts of this abbey? Never."`,
+                words: 4210,
+                kudos: 1840,
+                date: '2026-10-15',
+                comments: [
+                    { name: 'CathedralKaisen', text: 'The dark muted church aesthetic is breathtaking! Satoru and Suguru fit this mood perfectly.', date: '2026-10-18' }
+                ]
+            },
+            {
+                id: 'work-2',
+                title: 'Requiem of the Blood Moon',
+                author: 'Belmont_Scribe',
+                fandom: 'Castlevania',
+                rating: 'Mature',
+                ships: 'Alucard / Trevor Belmont',
+                characters: 'Alucard, Trevor Belmont, Sypha Belnades',
+                tags: 'Gothic Horror, Vampires, Cathedral Ruins, Hurt/Comfort',
+                img1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80',
+                img2: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
+                summary: 'Deep inside the subterranean archives of the Tepes castle, Alucard and Trevor unearth a sealed grimoire containing the history of the hunter clan.',
+                content: `The cathedral crypt was cold enough to freeze breath. Trevor held the iron lantern high, illuminating walls carved with ancient Latin script.\n\nAlucard walked with silent grace beside him, his long silver hair catching the amber flame glow. "Be cautious, Belmont. The seals on these tombs were written in blood."`,
+                words: 5120,
+                kudos: 2105,
+                date: '2026-10-22',
+                comments: []
+            },
+            {
+                id: 'work-3',
+                title: 'Memory of Rain and Jade',
+                author: 'Archon_Pact',
+                fandom: 'Genshin Impact',
+                rating: 'General Audiences',
+                ships: 'Zhongli / Neuvillette',
+                characters: 'Zhongli, Neuvillette',
+                tags: 'Court Drama, Classical Literature, Ancient Dragons, Elegance',
+                img1: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80',
+                img2: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
+                summary: 'During a formal diplomatic summit in the Palais Mermonia, the Chief Justice of Fontaine shares tea and ancient poetry with Liyue’s quiet scholar.',
+                content: `Rain washed over the tall windows of the Court of Fontaine. Neuvillette set down his fountain pen, pouring two cups of hot Liyue tea.\n\nZhongli accepted the porcelain cup with a faint nod of gratitude. "Your courts are as majestic as they are quiet, Iudge."`,
+                words: 3890,
+                kudos: 1420,
+                date: '2026-10-28',
+                comments: []
+            }
+        ];
+
+        // Storage & State
+        let works = [];
+        let currentWork = null;
+        let bookmarkedIds = [];
+
+        // Initialize Application
+        function initApp() {
+            const savedWorks = localStorage.getItem('archival_dark_works');
+            if (savedWorks) {
+                try {
+                    works = JSON.parse(savedWorks);
+                } catch(e) {
+                    works = INITIAL_WORKS;
+                }
+            } else {
+                works = INITIAL_WORKS;
+                saveWorksToStorage();
+            }
+
+            const savedBookmarks = localStorage.getItem('archival_dark_bookmarks');
+            if (savedBookmarks) {
+                try {
+                    bookmarkedIds = JSON.parse(savedBookmarks);
+                } catch(e) {
+                    bookmarkedIds = [];
+                }
+            }
+
+            updateBookmarkBadgeCount();
+            renderPairingCategories();
+            renderDirectory(works);
+        }
+
+        function saveWorksToStorage() {
+            localStorage.setItem('archival_dark_works', JSON.stringify(works));
+        }
+
+        function saveBookmarksToStorage() {
+            localStorage.setItem('archival_dark_bookmarks', JSON.stringify(bookmarkedIds));
+            updateBookmarkBadgeCount();
+        }
+
+        function updateBookmarkBadgeCount() {
+            document.getElementById('nav-bookmark-count').textContent = bookmarkedIds.length;
+        }
+
+        // View Switcher
+        function showView(viewId) {
+            ['pairings-view', 'directory-view', 'reader-view', 'post-view', 'bookmarks-view'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (id === viewId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+
+            if (viewId === 'bookmarks-view') {
+                renderBookmarks();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render Pairing Category Grid with Dual Avatars
+        function renderPairingCategories() {
+            const grid = document.getElementById('ship-category-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            works.forEach(work => {
+                const card = document.createElement('div');
+                card.className = 'gothic-panel rounded-xl p-5 shadow-cathedral hover:border-arch-maroon-light transition-all duration-300 cursor-pointer group flex flex-col justify-between';
+                card.onclick = () => openReader(work.id);
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Dual Avatar Row -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center -space-x-4">
+                                <img src="${escapeHtml(work.img1)}" alt="Character 1" class="w-14 h-18 object-cover avatar-arch-frame z-10 group-hover:scale-105 transition" />
+                                <img src="${escapeHtml(work.img2)}" alt="Character 2" class="w-14 h-18 object-cover avatar-arch-frame z-0 group-hover:scale-105 transition" />
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded bg-arch-maroon-dark text-arch-silver text-[10px] font-cinzel font-bold border border-arch-maroon-light">
+                                ${escapeHtml(work.rating)}
+                            </span>
+                        </div>
+
+                        <!-- Ship Title -->
+                        <h3 class="font-oldEnglish text-2xl font-normal text-arch-silver group-hover:text-white transition mb-1 leading-tight">
+                            ${escapeHtml(work.ships)}
+                        </h3>
+                        <p class="font-serif italic text-xs text-arch-pewter mb-3">
+                            Fandom: <span class="text-arch-text">${escapeHtml(work.fandom)}</span>
+                        </p>
+
+                        <!-- Work Title & Summary -->
+                        <h4 class="font-cinzel text-xs font-bold text-arch-text line-clamp-1 mb-1">
+                            "${escapeHtml(work.title)}"
+                        </h4>
+                        <p class="font-reader text-xs text-arch-pewter line-clamp-2 italic bg-arch-black/80 p-2.5 rounded border border-arch-maroon-dark">
+                            ${escapeHtml(work.summary)}
+                        </p>
+                    </div>
+
+                    <!-- Footer Stats -->
+                    <div class="mt-4 pt-3 border-t border-arch-maroon-dark flex items-center justify-between text-[11px] font-cinzel text-arch-pewter">
+                        <span><i class="fa-solid fa-scroll mr-1 text-arch-silver/70"></i>${work.words.toLocaleString()} words</span>
+                        <span><i class="fa-solid fa-heart mr-1 text-arch-maroon-light"></i>${work.kudos} kudos</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render Directory Works List
+        function renderDirectory(list) {
+            const container = document.getElementById('works-container');
+            const countEl = document.getElementById('results-count');
+            if (countEl) countEl.textContent = `Showing ${list.length} ${list.length === 1 ? 'Manuscript' : 'Manuscripts'}`;
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 gothic-panel rounded-xl border border-dashed border-arch-maroon-dark">
+                        <div class="text-4xl mb-2 text-arch-silver">✝</div>
+                        <h3 class="font-oldEnglish text-2xl font-normal text-arch-silver">No Manuscripts Found</h3>
+                        <p class="font-serif italic text-xs text-arch-pewter">Try adjusting your search query.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(work => {
+                const card = document.createElement('div');
+                card.className = 'gothic-panel rounded-xl border border-arch-maroon-dark p-5 shadow-cathedral transition duration-300 cursor-pointer group hover:border-arch-maroon-light';
+                card.onclick = () => openReader(work.id);
+
+                const isBookmarked = bookmarkedIds.includes(work.id);
+
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arch-maroon-dark pb-3 mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center -space-x-3">
+                                <img src="${escapeHtml(work.img1)}" class="w-10 h-12 object-cover avatar-arch-frame" />
+                                <img src="${escapeHtml(work.img2)}" class="w-10 h-12 object-cover avatar-arch-frame" />
+                            </div>
+                            <div>
+                                <h3 class="font-oldEnglish text-2xl font-normal text-arch-silver group-hover:text-white transition leading-tight">
+                                    ${escapeHtml(work.title)}
+                                </h3>
+                                <span class="font-cinzel text-xs text-arch-pewter font-bold">${escapeHtml(work.ships)}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 font-cinzel text-xs">
+                            <span class="px-2.5 py-0.5 rounded bg-arch-maroon-dark text-arch-silver border border-arch-maroon-light">
+                                ${escapeHtml(work.rating)}
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded bg-arch-black text-arch-pewter border border-arch-maroon-dark">
+                                ${escapeHtml(work.fandom)}
+                            </span>
+                            ${isBookmarked ? '<span class="text-arch-silver">🔖</span>' : ''}
+                        </div>
+                    </div>
+
+                    <p class="font-reader italic text-xs text-arch-pewter line-clamp-2 mb-3 bg-arch-black/70 p-2.5 rounded border border-arch-maroon-dark">
+                        "${escapeHtml(work.summary)}"
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-between text-[11px] font-cinzel text-arch-pewter">
+                        <div class="flex items-center gap-4">
+                            <span><i class="fa-solid fa-feather mr-1 text-arch-silver/70"></i>${escapeHtml(work.author)}</span>
+                            <span><i class="fa-solid fa-scroll mr-1 text-arch-silver/70"></i>${work.words.toLocaleString()} words</span>
+                            <span><i class="fa-solid fa-heart mr-1 text-arch-maroon-light"></i>${work.kudos} kudos</span>
+                        </div>
+                        <span>Archived: ${work.date}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filter Function
+        function filterWorks() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const rating = document.getElementById('rating-filter').value;
+
+            const filtered = works.filter(w => {
+                const matchesRating = (rating === 'ALL' || w.rating === rating);
+                const matchesQuery = !query || 
+                    w.title.toLowerCase().includes(query) ||
+                    w.author.toLowerCase().includes(query) ||
+                    w.fandom.toLowerCase().includes(query) ||
+                    w.ships.toLowerCase().includes(query) ||
+                    w.tags.toLowerCase().includes(query);
+                
+                return matchesRating && matchesQuery;
+            });
+
+            renderDirectory(filtered);
+        }
+
+        function setSearchQuery(term) {
+            document.getElementById('search-input').value = term;
+            filterWorks();
+        }
+
+        // Open Reader
+        function openReader(workId) {
+            const work = works.find(w => w.id === workId);
+            if (!work) return;
+
+            currentWork = work;
+
+            // Dual Avatars
+            document.getElementById('reader-img1').src = work.img1;
+            document.getElementById('reader-img2').src = work.img2;
+            document.getElementById('reader-pairing-name').textContent = work.ships;
+
+            // Metadata
+            document.getElementById('reader-title').textContent = work.title;
+            document.getElementById('reader-author').textContent = work.author;
+            document.getElementById('reader-summary').textContent = work.summary;
+            document.getElementById('reader-rating-badge').textContent = work.rating;
+            document.getElementById('reader-fandom-badge').textContent = work.fandom;
+            document.getElementById('reader-ships').textContent = work.ships;
+            document.getElementById('reader-characters').textContent = work.characters || 'N/A';
+            document.getElementById('reader-tags').textContent = work.tags;
+            document.getElementById('reader-words').textContent = `Words: ${work.words.toLocaleString()}`;
+            document.getElementById('reader-date').textContent = `Archived: ${work.date}`;
+            document.getElementById('reader-kudos-count').textContent = work.kudos;
+
+            // Content
+            const contentContainer = document.getElementById('reader-body-container');
+            const paragraphs = work.content.split('\n\n');
+            contentContainer.innerHTML = paragraphs.map(p => `<p class="leading-relaxed mb-4">${escapeHtml(p)}</p>`).join('');
+
+            renderComments();
+            updateBookmarkBtnUI();
+
+            showView('reader-view');
+        }
+
+        // Reader Theme Switcher
+        function setReaderTheme(themeClass) {
+            const paper = document.getElementById('book-paper');
+            paper.className = `rounded-xl border border-arch-maroon-dark min-h-[650px] shadow-inner relative flex flex-col md:flex-row overflow-hidden transition-colors duration-300 ${themeClass}`;
+        }
+
         function setReaderFontFamily(fontClass) {
             const body = document.getElementById('reader-body-container');
             body.className = `space-y-4 mb-8 ${fontClass}`;
         }
 
-        // Export Manuscript as EPUB (Zip Archive with Open eBook Structure)
+        function setReaderFontSize(sizeClass) {
+            const body = document.getElementById('reader-body-container');
+            body.className = `font-reader space-y-4 mb-8 ${sizeClass}`;
+        }
+
+        // Wax Seal Kudos
+        function addKudos() {
+            if (!currentWork) return;
+
+            currentWork.kudos += 1;
+            document.getElementById('reader-kudos-count').textContent = currentWork.kudos;
+            saveWorksToStorage();
+
+            const btn = document.getElementById('kudos-btn');
+            btn.classList.add('wax-seal-anim');
+            setTimeout(() => btn.classList.remove('wax-seal-anim'), 500);
+
+            showToast('Dark Crimson Seal Affixed! Kudos granted 🩸');
+        }
+
+        // Comments
+        function renderComments() {
+            if (!currentWork) return;
+            const list = document.getElementById('comments-list');
+            const countBadge = document.getElementById('comments-count-badge');
+            
+            const comments = currentWork.comments || [];
+            countBadge.textContent = comments.length;
+            list.innerHTML = '';
+
+            if (comments.length === 0) {
+                list.innerHTML = `<p class="font-serif italic text-xs text-arch-pewter text-center py-3">No manuscript notes yet. Leave your dark thoughts.</p>`;
+                return;
+            }
+
+            comments.forEach(c => {
+                const commentEl = document.createElement('div');
+                commentEl.className = 'bg-black/60 p-3 rounded border border-arch-maroon-dark space-y-1 text-xs';
+                commentEl.innerHTML = `
+                    <div class="flex items-center justify-between font-cinzel">
+                        <strong class="text-arch-silver font-bold">${escapeHtml(c.name)}</strong>
+                        <span class="text-[10px] text-arch-pewter">${c.date}</span>
+                    </div>
+                    <p class="font-reader text-arch-text">${escapeHtml(c.text)}</p>
+                `;
+                list.appendChild(commentEl);
+            });
+        }
+
+        function postComment() {
+            if (!currentWork) return;
+            const nameInput = document.getElementById('comment-name');
+            const textInput = document.getElementById('comment-text');
+
+            const name = nameInput.value.trim() || 'Anonymous Reader';
+            const text = textInput.value.trim();
+
+            if (!text) {
+                showToast('Please type a comment first.');
+                return;
+            }
+
+            if (!currentWork.comments) currentWork.comments = [];
+            
+            currentWork.comments.push({
+                name: name,
+                text: text,
+                date: new Date().toISOString().split('T')[0]
+            });
+
+            saveWorksToStorage();
+            textInput.value = '';
+            renderComments();
+            showToast('Comment published to manuscript 🖋️');
+        }
+
+        // Bookmarks
+        function toggleBookmarkCurrent() {
+            if (!currentWork) return;
+            const index = bookmarkedIds.indexOf(currentWork.id);
+            if (index > -1) {
+                bookmarkedIds.splice(index, 1);
+                showToast('Removed from saved shelf');
+            } else {
+                bookmarkedIds.push(currentWork.id);
+                showToast('Manuscript saved! 🔖');
+            }
+            saveBookmarksToStorage();
+            updateBookmarkBtnUI();
+        }
+
+        function updateBookmarkBtnUI() {
+            if (!currentWork) return;
+            const btn = document.getElementById('reader-bookmark-btn');
+            const isBookmarked = bookmarkedIds.includes(currentWork.id);
+            
+            if (isBookmarked) {
+                btn.innerHTML = `<i class="fa-solid fa-bookmark text-arch-silver"></i> <span>Saved to Shelf</span>`;
+            } else {
+                btn.innerHTML = `<i class="fa-regular fa-bookmark"></i> <span>Save Manuscript</span>`;
+            }
+        }
+
+        function renderBookmarks() {
+            const container = document.getElementById('bookmarks-container');
+            const bookmarkedWorks = works.filter(w => bookmarkedIds.includes(w.id));
+            
+            if (bookmarkedWorks.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 gothic-panel rounded-xl border border-dashed border-arch-maroon-dark">
+                        <div class="text-4xl mb-2 text-arch-silver">✝</div>
+                        <h3 class="font-oldEnglish text-2xl font-normal text-arch-silver">No Saved Manuscripts</h3>
+                        <p class="font-serif italic text-xs text-arch-pewter">Click "Save Manuscript" on any story page.</p>
+                    </div>
+                `;
+                return;
+            }
+            renderDirectory(bookmarkedWorks);
+        }
+
+        // EPUB Exporter
         function downloadEPUB() {
             if (!currentWork) return;
 
@@ -287,10 +1008,8 @@
             const zip = new JSZip();
             const cleanTitle = currentWork.title.replace(/[^a-zA-Z0-9\s]/g, '');
 
-            // 1. mimetype file
             zip.file("mimetype", "application/epub+zip", { compression: "STORE" });
 
-            // 2. META-INF directory
             zip.file("META-INF/container.xml", `<?xml version="1.0"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
   <rootfiles>
@@ -298,10 +1017,8 @@
   </rootfiles>
 </container>`);
 
-            // Paragraphs HTML conversion
             const paragraphs = currentWork.content.split('\n\n').map(p => `<p>${escapeHtml(p)}</p>`).join('\n');
 
-            // 3. OEBPS/chapter.xhtml
             zip.file("OEBPS/chapter.xhtml", `<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -309,9 +1026,9 @@
   <title>${escapeHtml(currentWork.title)}</title>
   <style>
     body { font-family: serif; margin: 5%; color: #111; line-height: 1.6; }
-    h1 { font-family: "UnifrakturMaguntia", serif; font-size: 2em; text-align: center; color: #4A121A; }
+    h1 { font-family: "UnifrakturMaguntia", serif; font-size: 2em; text-align: center; color: #2D0A10; }
     .author { font-style: italic; text-align: center; margin-bottom: 2em; color: #555; }
-    .summary { font-style: italic; background: #f4f0ec; padding: 1em; border-left: 3px solid #4A121A; margin-bottom: 2em; }
+    .summary { font-style: italic; background: #f4f0ec; padding: 1em; border-left: 3px solid #2D0A10; margin-bottom: 2em; }
     p { margin-bottom: 1em; text-indent: 1.5em; }
   </style>
 </head>
@@ -324,7 +1041,6 @@
 </body>
 </html>`);
 
-            // 4. OEBPS/content.opf
             zip.file("OEBPS/content.opf", `<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="urn:oasis:names:tc:opendocument:xmlns:package" unique-identifier="BookId" version="2.0">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -341,7 +1057,6 @@
   </spine>
 </package>`);
 
-            // Generate blob & download
             zip.generateAsync({ type: "blob" }).then(function(blob) {
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob);
@@ -353,7 +1068,7 @@
             });
         }
 
-        // Export Manuscript as Printable PDF / Document View
+        // PDF Exporter
         function downloadPDF() {
             if (!currentWork) return;
 
@@ -372,7 +1087,7 @@
                             max-width: 750px;
                             margin: 40px auto;
                             padding: 20px;
-                            color: #1a1518;
+                            color: #0f0c10;
                             background: #fff;
                         }
                         .gothic-title {
@@ -380,7 +1095,7 @@
                             font-size: 38px;
                             text-align: center;
                             margin-bottom: 5px;
-                            color: #380E14;
+                            color: #1F070B;
                         }
                         .byline {
                             text-align: center;
@@ -390,9 +1105,9 @@
                             color: #555;
                         }
                         .meta-box {
-                            border: 1px solid #380E14;
+                            border: 1px solid #1F070B;
                             padding: 15px;
-                            background: #faf8f5;
+                            background: #f8f6f4;
                             margin-bottom: 30px;
                             font-size: 14px;
                         }
@@ -431,7 +1146,74 @@
             showToast('PDF print manuscript dialog opened 🖨️');
         }
 
-        // ... existing code ...
+        // Post Work Submit
+        function handlePostSubmit(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('post-title').value.trim();
+            const author = document.getElementById('post-author').value.trim();
+            const fandom = document.getElementById('post-fandom').value.trim();
+            const rating = document.getElementById('post-rating').value;
+            const img1 = document.getElementById('post-img1').value.trim();
+            const img2 = document.getElementById('post-img2').value.trim();
+            const ships = document.getElementById('post-ships').value.trim();
+            const tags = document.getElementById('post-tags').value.trim();
+            const summary = document.getElementById('post-summary').value.trim();
+            const content = document.getElementById('post-content').value.trim();
+
+            const wordCount = content.split(/\s+/).filter(Boolean).length;
+
+            const newWork = {
+                id: 'work-' + Date.now(),
+                title: title,
+                author: author,
+                fandom: fandom,
+                rating: rating,
+                img1: img1,
+                img2: img2,
+                ships: ships,
+                characters: 'Main Pairing',
+                tags: tags || 'Gothic Anime, Dark Romance',
+                summary: summary,
+                content: content,
+                words: wordCount,
+                kudos: 1,
+                date: new Date().toISOString().split('T')[0],
+                comments: []
+            };
+
+            works.unshift(newWork);
+            saveWorksToStorage();
+
+            document.getElementById('post-work-form').reset();
+            showToast('Manuscript published to cathedral archive! 🩸');
+            renderPairingCategories();
+            openReader(newWork.id);
+        }
+
+        // Helper Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2500);
+        }
+
+        // Escape HTML
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>"']/g, function(m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+
+        window.onload = initApp;
     </script>
 </body>
 </html>
